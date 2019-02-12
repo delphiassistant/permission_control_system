@@ -1,0 +1,43 @@
+﻿@model IdentityCustomized.Models.ApplicationRole
+
+@{
+    
+}
+
+<h2><i class="@ViewBag.Icon"></i> @ViewBag.Title</h2>
+
+<h3>آیا مطمئن هستید که این گروه کاربر حذف شود؟</h3>
+<div>
+    
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleNameLocalized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleNameLocalized)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(r => r.Id)
+        @Html.HiddenFor(r => r.Name)
+        @Html.HiddenFor(r => r.RoleNameLocalized)
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger"/>
+            @Html.ActionLink("بازگشت به فهرست", "Index", null, new {@class = "btn btn-success"})
+        </div>
+    }
+</div>

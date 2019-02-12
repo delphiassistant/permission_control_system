@@ -1,0 +1,118 @@
+﻿@model IdentityCustomized.Models.CreateUserViewModel
+@{
+    ViewBag.Title = "افزودن کاربر";
+    List<TreeViewItemModel> treeItems = ViewBag.TreeItems as List<TreeViewItemModel>;
+}
+
+<h2><em class="@ViewBag.Icon"></em> @ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>ایجاد حساب کاربری جدید</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new {@class = "text-danger bg-danger"})
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Fullname, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.Fullname, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Fullname, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NationalCode, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.NationalCode, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.NationalCode, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.Phone, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Phone, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LandLinePhoneNumber, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.LandLinePhoneNumber, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.LandLinePhoneNumber, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.Address, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Address, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.Email, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.Username, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Username, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-3 control-label"})
+                    <div class="col-md-9">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.IsSuperAdmin, new { @class = "col-md-3 control-label" })*@
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        @Html.EditorFor(m => m.IsSuperAdmin, new { @class = "form-control" }) @Html.LabelFor(m => m.IsSuperAdmin)
+                        @Html.ValidationMessageFor(model => model.IsSuperAdmin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("گروه های کاربری", new {@class = "col-md-3 control-label"})
+                    @Html.Kendo().TreeView().Name("Roles").BindTo(treeItems).Checkboxes(checkboxes => checkboxes.Name("SelectedRoles")).HtmlAttributes(new {style = "min-height:100px;"})
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" class="btn btn-primary" value="ثبت" />
+                    @Html.ActionLink("بازگشت به فهرست", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,38 @@
+﻿@model IdentityCustomized.Models.LoginByOtpVerifyViewModel
+@{
+    ViewBag.Title = "اعتبارسنجی کد یکبار مصرف";
+}
+
+<h2><i class="fas fa-tty"></i> @ViewBag.Title</h2>
+
+@using (Html.BeginForm("LoginByOtpVerify", "Account", new { ReturnUrl = ViewBag.ReturnUrl },FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>کد یکبار مصرف را وارد کنید</h4>
+    <h5>@ViewBag.Status</h5>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.OtpCode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.OtpCode, new { @class = "form-control", autocomplete = "off" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="checkbox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="بررسی کد" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

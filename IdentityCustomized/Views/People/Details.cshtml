@@ -1,0 +1,33 @@
+﻿@model IdentityCustomized.Models.Person
+
+@{
+    
+}
+
+<h2><i class="@ViewBag.Icon"></i> @ViewBag.Title</h2>
+
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonAge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.PersonID },new {@class = "btn btn-primary"}) 
+    @Html.ActionLink("بازگشت به فهرست", "Index",null,new {@class = "btn btn-default"})
+</p>

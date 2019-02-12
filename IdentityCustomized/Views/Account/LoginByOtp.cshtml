@@ -1,0 +1,31 @@
+﻿@model IdentityCustomized.Models.LoginByOtpViewModel
+@{
+    ViewBag.Title = "ورود با استفاده از کد یکبار مصرف";
+}
+
+<h2><i class="fas fa-tty"></i> @ViewBag.Title</h2>
+
+@using (Html.BeginForm("LoginByOtp", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber,
+                new { @class = "form-control",
+                      placeholder = ModelMetadata.FromLambdaExpression(m => m.PhoneNumber, ViewData).Watermark }
+                )
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="درخواست کد" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,21 @@
+﻿@using IdentityCustomized.Classes
+@using Microsoft.AspNet.Identity
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user-circle"></i> حساب کاربری<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        @if (Request.IsAuthenticated)
+        {
+            <li><p class="navbar-text">@User.Identity.GetUserFullName()، خوش آمدید</p></li>
+            <li><a href="~/Manage/Index"><i class="fas fa-user-cog"></i> مدیریت حساب کاربری</a></li>
+            <li><a href="~/Account/LogOff"><i class="fas fa-sign-out-alt"></i> خروج از حساب کاربری</a></li>
+        }
+        else
+        {
+            <li><a href="~/Account/Login"><i class="fas fa-sign-in-alt"></i> ورود به حساب کاربری</a></li>
+            <li><a href="~/Account/LoginByOtp"><i class="fas fa-tty"></i> ورود با کد یکبار مصرف</a></li>
+            <li><a href="~/Account/Register"><i class="fas fa-user-plus"></i> ایجاد حساب کاربری</a></li>
+        }
+    </ul>
+</li>

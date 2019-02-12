@@ -1,0 +1,102 @@
+﻿@font-face {
+    font-family: Sahel;
+    src: url('persian_fonts/sahel/Sahel-FD.eot');
+    src: url('persian_fonts/sahel/Sahel-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/sahel/Sahel-FD.woff') format('woff'),
+         url('persian_fonts/sahel/Sahel-FD.ttf') format('truetype');
+    font-weight: normal;
+}
+      
+@font-face {
+    font-family: Sahel;
+    src: url('persian_fonts/sahel/Sahel-Bold-FD.eot');
+    src: url('persian_fonts/sahel/Sahel-Bold-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/sahel/Sahel-Bold-FD.woff') format('woff'),
+         url('persian_fonts/sahel/Sahel-Bold-FD.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url('persian_fonts/sahel/Sahel-Black-FD.eot');
+    src: url('persian_fonts/sahel/Sahel-Black-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/sahel/Sahel-Black-FD.woff') format('woff'),
+         url('persian_fonts/sahel/Sahel-Black-FD.ttf') format('truetype');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: Vazir;
+    src: url('persian_fonts/vazir/Vazir-FD.eot');
+    src: url('persian_fonts/vazir/Vazir-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/vazir/Vazir-FD.woff2') format('woff2'),
+         url('persian_fonts/vazir/Vazir-FD.woff') format('woff'),
+         url('persian_fonts/vazir/Vazir-FD.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('persian_fonts/vazir/Vazir-Bold-FD.eot');
+    src: url('persian_fonts/vazir/Vazir-Bold-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/vazir/Vazir-Bold-FD.woff2') format('woff2'),
+         url('persian_fonts/vazir/Vazir-Bold-FD.woff') format('woff'),
+         url('persian_fonts/vazir/Vazir-Bold-FD.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('persian_fonts/vazir/Vazir-Black-FD.eot');
+    src: url('persian_fonts/vazir/Vazir-Black-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/vazir/Vazir-Black-FD.woff2') format('woff2'),
+         url('persian_fonts/vazir/Vazir-Black-FD.woff') format('woff'),
+         url('persian_fonts/vazir/Vazir-Black-FD.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('persian_fonts/vazir/Vazir-Medium-FD.eot');
+    src: url('persian_fonts/vazir/Vazir-Medium-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/vazir/Vazir-Medium-FD.woff2') format('woff2'),
+         url('persian_fonts/vazir/Vazir-Medium-FD.woff') format('woff'),
+         url('persian_fonts/vazir/Vazir-Medium-FD.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('persian_fonts/vazir/Vazir-Light-FD.eot');
+    src: url('persian_fonts/vazir/Vazir-Light-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/vazir/Vazir-Light-FD.woff2') format('woff2'),
+         url('persian_fonts/vazir/Vazir-Light-FD.woff') format('woff'),
+         url('persian_fonts/vazir/Vazir-Light-FD.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('persian_fonts/vazir/Vazir-Thin-FD.eot');
+    src: url('persian_fonts/vazir/Vazir-Thin-FD.eot?#iefix') format('embedded-opentype'),
+         url('persian_fonts/vazir/Vazir-Thin-FD.woff2') format('woff2'),
+         url('persian_fonts/vazir/Vazir-Thin-FD.woff') format('woff'),
+         url('persian_fonts/vazir/Vazir-Thin-FD.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: Sahel !important;
+    text-align: justify;
+    line-height: 1.5em;
+}
+
+body {
+    font-family: Vazir !important;
+    text-align: justify;
+}
+
+a {
+    text-decoration: none !important;
+}

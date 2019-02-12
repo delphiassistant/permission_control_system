@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ParsGreen.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ParsGreen.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ParsGreen.com/">
+      <s:element name="MessageInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MsgBody" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="part" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUnicode" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MessageInfoResult" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="part" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUnicode" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isFlash" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="udh" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="success" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="retStr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendGroupSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendGroupSMSResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="success" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="retStr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupSMSP2P">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="texts" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="isFlash" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="udh" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="success" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="retStr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendGroupSMSP2PResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendGroupSMSP2PResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="success" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="retStr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendToGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="groupIdEncrypt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isFlash" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="udh" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="success" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="retStr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendToGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendToGroupResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="success" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="retStr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupSmsSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="from" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isFlash" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="udh" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupSmsSimpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendGroupSmsSimpleResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDelivery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeliveryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDeliveryResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSMSNumbers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="numberType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="numbers" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSMSNumbersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSMSNumbersResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="numbers" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="MessageInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:MessageInfo" />
+  </wsdl:message>
+  <wsdl:message name="MessageInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:MessageInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendGroupSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupSMS" />
+  </wsdl:message>
+  <wsdl:message name="SendGroupSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendGroupSMSP2PSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupSMSP2P" />
+  </wsdl:message>
+  <wsdl:message name="SendGroupSMSP2PSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupSMSP2PResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendToGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:SendToGroup" />
+  </wsdl:message>
+  <wsdl:message name="SendToGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:SendToGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendGroupSmsSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupSmsSimple" />
+  </wsdl:message>
+  <wsdl:message name="SendGroupSmsSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupSmsSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDelivery" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeliveryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSMSNumbersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSMSNumbers" />
+  </wsdl:message>
+  <wsdl:message name="GetSMSNumbersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSMSNumbersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SendSMSSoap">
+    <wsdl:operation name="MessageInfo">
+      <wsdl:input message="tns:MessageInfoSoapIn" />
+      <wsdl:output message="tns:MessageInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSMS">
+      <wsdl:input message="tns:SendGroupSMSSoapIn" />
+      <wsdl:output message="tns:SendGroupSMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSMSP2P">
+      <wsdl:input message="tns:SendGroupSMSP2PSoapIn" />
+      <wsdl:output message="tns:SendGroupSMSP2PSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendToGroup">
+      <wsdl:input message="tns:SendToGroupSoapIn" />
+      <wsdl:output message="tns:SendToGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSmsSimple">
+      <wsdl:input message="tns:SendGroupSmsSimpleSoapIn" />
+      <wsdl:output message="tns:SendGroupSmsSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDelivery">
+      <wsdl:input message="tns:GetDeliverySoapIn" />
+      <wsdl:output message="tns:GetDeliverySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSMSNumbers">
+      <wsdl:input message="tns:GetSMSNumbersSoapIn" />
+      <wsdl:output message="tns:GetSMSNumbersSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SendSMSSoap" type="tns:SendSMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MessageInfo">
+      <soap:operation soapAction="http://ParsGreen.com/MessageInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSMS">
+      <soap:operation soapAction="http://ParsGreen.com/SendGroupSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSMSP2P">
+      <soap:operation soapAction="http://ParsGreen.com/SendGroupSMSP2P" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendToGroup">
+      <soap:operation soapAction="http://ParsGreen.com/SendToGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSmsSimple">
+      <soap:operation soapAction="http://ParsGreen.com/SendGroupSmsSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDelivery">
+      <soap:operation soapAction="http://ParsGreen.com/GetDelivery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSMSNumbers">
+      <soap:operation soapAction="http://ParsGreen.com/GetSMSNumbers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SendSMSSoap12" type="tns:SendSMSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MessageInfo">
+      <soap12:operation soapAction="http://ParsGreen.com/MessageInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSMS">
+      <soap12:operation soapAction="http://ParsGreen.com/SendGroupSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSMSP2P">
+      <soap12:operation soapAction="http://ParsGreen.com/SendGroupSMSP2P" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendToGroup">
+      <soap12:operation soapAction="http://ParsGreen.com/SendToGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupSmsSimple">
+      <soap12:operation soapAction="http://ParsGreen.com/SendGroupSmsSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDelivery">
+      <soap12:operation soapAction="http://ParsGreen.com/GetDelivery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSMSNumbers">
+      <soap12:operation soapAction="http://ParsGreen.com/GetSMSNumbers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SendSMS">
+    <wsdl:port name="SendSMSSoap" binding="tns:SendSMSSoap">
+      <soap:address location="http://login.parsgreen.com/Api/SendSMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SendSMSSoap12" binding="tns:SendSMSSoap12">
+      <soap12:address location="http://login.parsgreen.com/Api/SendSMS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IdentityCustomized.Models.ApplicationUser>
+
+@{
+    
+}
+
+<h2>
+    <i class="@ViewBag.Icon"></i> @ViewBag.Title
+</h2>
+
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Fullname);
+        columns.Bound(model => model.UserName);
+        columns.Bound(model => model.NationalCode);
+        columns.Bound(model => model.Email);
+        columns.Bound(model => model.PhoneNumber);
+        columns.Bound(model => model.LandLinePhoneNumber);
+        columns.Bound(model => model.IsSuperAdmin);
+        columns.Bound(item => @item.Id).Title("دستورات").Filterable(false).Groupable(false)
+    .Template(@<text>
+        @Html.ActionLinkPermission("ویرایش", "Edit", new { id = @item.Id }, new { @class = "k-button" })
+        @Html.ActionLinkPermission("حذف", "Delete", new { id = @item.Id }, new { @class = "k-button" })
+    </text>).Width(200);
+    })
+    .ToolBar(toolbar =>
+    {
+        if (ActionLinkPermissionHelper.CheckActionPermission("Users", "Create", "GET"))
+        {
+            toolbar.Template(@<text>
+                <div class="toolbar">
+                    @Html.ActionLinkPermission("افزودن", "Create", null, new { @class = "k-button" })
+                </div></text>);
+        }
+    }
+    )
+    .Groupable()
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .DataSource(dataSource => 
+                dataSource.Server().Model(model => model.Id(item => item.Id))
+               )
+)
+
+

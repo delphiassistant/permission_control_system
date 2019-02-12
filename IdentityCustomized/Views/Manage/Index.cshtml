@@ -1,0 +1,98 @@
+﻿@model IdentityCustomized.Models.IndexViewModel
+@{
+    ViewBag.Title = "مدیریت حساب کاربری";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p class="text-success bg-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>با استفاده از امکانات این صفحه می توانید حساب کاربری خود را مدیریت کنید</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>کلمه عبور:</dt>
+        <dd>
+
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("تغییر کلمه عبور", "ChangePassword", null, new { @class = "btn btn-info btn-xs" })
+            }
+            else
+            {
+                @Html.ActionLink("افزودن کلمه عبور", "SetPassword", null, new { @class = "btn btn-info btn-xs" })
+            }
+
+        </dd>
+        <br />
+        @*<dt>External Logins:</dt>
+        <dd>
+            @Model.Logins.Count &nbsp;&nbsp;
+            @Html.ActionLink("مدیریت", "ManageLogins", null, new { @class = "btn btn-info btn-xs" })
+        </dd>*@
+        @*
+        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+
+         See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+            for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+
+         Uncomment the following block after you have set up two-factor authentication
+        *@
+
+        <dt>شماره موبایل:</dt>
+        <dd>
+            @(Model.PhoneNumber ?? "فاقد شماره موبایل")
+            @if (Model.PhoneNumber != null)
+            {
+                <br />
+                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <text>@Html.ActionLink("تغییر شماره موبایل", "AddPhoneNumber", null, new { @class = "btn btn-info btn-xs" })</text>
+                    <text><input type="submit" value="حذف کردن شماره موبایل" class="btn btn-danger btn-xs" /></text>
+                }
+            }
+            else
+            {
+                <text>@Html.ActionLink("افزودن شماره موبایل", "AddPhoneNumber", null, new { @class = "btn btn-info btn-xs" })</text>
+            }
+        </dd>
+        <br />
+        <dt>آدرس ایمیل تایید شده؟</dt>
+        <dd>
+            @(Model.EmailConfirmed ? "بله" : "خیر")
+            @if (!Model.EmailConfirmed)
+            {
+                @Html.ActionLink("دریافت مجدد ایمیل تاییدیه", "ConfirmEmail", null, new { @class = "btn btn-info btn-xs" })
+            }
+        </dd>
+        <br />
+
+        <dt>احراز هویت دو مرحله ای:</dt>
+        <dd>
+            @*<p>
+                There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication.
+            </p>*@
+            @if (Model.TwoFactor)
+            {
+                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <text>فعال است
+                        <input type="submit" value="غیرفعال کردن" class="btn btn-info btn-xs" />
+                    </text>
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <text>غیر فعال است
+                        <input type="submit" value="فعال کردن" class="btn btn-success btn-xs" />
+                    </text>
+                }
+            }
+        </dd>
+    </dl>
+</div>

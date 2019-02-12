@@ -1,0 +1,74 @@
+﻿@model IdentityCustomized.Models.UpdateUserViewModel
+
+@{
+    ViewBag.Title = "حذف کاربر";
+}
+
+<h2><em class="@ViewBag.Icon"></em> @ViewBag.Title</h2>
+
+<h3>آیا مطمئن هستید که این کاربر حذف شود؟</h3>
+<div>
+    <h4>مشخصات کاربر</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NationalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NationalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LandLinePhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LandLinePhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fullname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm(new {id = Model.Id})) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف شود" class="btn btn-danger" /> 
+            @Html.ActionLink("خیر", "Index",null,new {@class="btn btn-success"})
+        </div>
+    }
+</div>

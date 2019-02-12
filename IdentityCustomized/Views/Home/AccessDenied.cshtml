@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "نداشتن دسترسی";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>شما به صفحه درخواست شده دسترسی ندارید.</p>
+<p>لطفا با مدیر سیستم تماس بگیرید.</p>
+@if (Request.UrlReferrer != null)
+{
+    <p><a href="@Request.UrlReferrer.ToString()">بازگشت به صفحه قبلی</a>
+    </p>
+}
+else
+{
+    <p>@Html.ActionLink("بازگشت به صفحه اصلی سایت","Index","Home")</p>
+}
+
